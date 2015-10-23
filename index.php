@@ -8,6 +8,14 @@ switch($route) {
         include_once("unidades/index.php");
         $content = ob_get_contents();
         break;
+    case "unidades/registrar":
+        $title = "Registrar unidad";
+        include_once("unidades/editar.php");
+        $content = ob_get_contents();
+        break;
+    case "unidades/guardar":
+        include_once("unidades/guardar.php");
+        break;
     case "categorias":
         $title = "Categorías";
         include_once("categorias/index.php");
