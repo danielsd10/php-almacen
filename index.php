@@ -6,12 +6,10 @@ switch($route) {
     case "unidades":
         $title = "Unidades";
         include_once("unidades/index.php");
-        $content = ob_get_contents();
         break;
     case "unidades/registrar":
         $title = "Registrar unidad";
         include_once("unidades/editar.php");
-        $content = ob_get_contents();
         break;
     case "unidades/guardar":
         include_once("unidades/guardar.php");
@@ -19,17 +17,14 @@ switch($route) {
     case "categorias":
         $title = "Categorías";
         include_once("categorias/index.php");
-        $content = ob_get_contents();
         break;
     case "productos":
         $title = "Productos";
         include_once("productos/index.php");
-        $content = ob_get_contents();
         break;
     case "productos/registrar":
         $title = "Registrar producto";
         include_once("productos/registrar.php");
-        $content = ob_get_contents();
         break;
     case "productos/guardar":
         include_once("productos/guardar.php");
@@ -37,8 +32,9 @@ switch($route) {
     default:
         $title = "Inicio";
         include_once("welcome.php");
-        $content = ob_get_contents();
         break;
 }
+
+$content = ob_get_contents();
 ob_end_clean();
 include_once("template.php");
