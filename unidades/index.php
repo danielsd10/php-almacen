@@ -1,7 +1,6 @@
 <?php
-    $f = fopen("data/unidades.csv", "r");
-    $unidades = explode("\n",trim(fread($f, filesize("data/unidades.csv")), "\n"));
-    fclose($f);
+    include_once("data/unidades.php");
+    $unidades = readUnidades();
 ?>
 <div class="form-box">
     <h2><?=$title?></h2>
@@ -14,16 +13,14 @@
             <th>Nombre</th>
             <th></th>
         </tr>
-        <?php foreach($unidades as $row) {
-            $unidad = explode(",", $row);
-            ?>
+        <?php foreach($unidades as $unidad) { ?>
         <tr>
-            <td><?=$unidad[0]?></td>
-            <td><?=$unidad[1]?></td>
+            <td><?=$unidad["id"]?></td>
+            <td><?=$unidad["nombre"]?></td>
             <td class="cell-actions">
                 <div class="btn-group">
-                    <a class="btn btn-xs btn-warning" href="#"><span class="glyphicon glyphicon-pencil"></span></a>
-                    <a class="btn btn-xs btn-danger" href="#"><span class="glyphicon glyphicon-trash"></span></a>
+                    <a class="btn btn-xs btn-warning" href="index.php?route=unidades/editar&id=<?=$unidad["id"]?>"><span class="glyphicon glyphicon-pencil"></span></a>
+                    <a class="btn btn-xs btn-danger" href="index.php?route=unidades/eliminar&id=<?=$unidad["id"]?>"><span class="glyphicon glyphicon-trash"></span></a>
                 </div>
             </td>
         </tr>

@@ -11,8 +11,19 @@ switch($route) {
         $title = "Registrar unidad";
         include_once("unidades/editar.php");
         break;
+    case "unidades/editar":
+        $title = "Editar unidad";
+        $id = $_GET['id'];
+        include_once("unidades/editar.php");
+        break;
     case "unidades/guardar":
         include_once("unidades/guardar.php");
+        break;
+    case "unidades/eliminar":
+        $id = $_GET['id'];
+        include_once("data/unidades.php");
+        deleteUnidad($id);
+        header('Location: index.php?route=unidades');
         break;
     case "categorias":
         $title = "Categorías";
